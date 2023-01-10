@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import java.util.Random;
 
@@ -40,9 +42,9 @@ public class MysteryNumber {
 
     public static void game(int count, int mod) {
         //operations[] keeps track of the arithmetic operations used per round, results[] lists the user's inputs per round and randomMod[] tracks the randomized numbers used for each round's operation
-        int[] operations = {-1, -1}, randomMod = {0, 0, 0, 0};
+        int[] operations = {-1, -1, -1, -1}, randomMod = {0, 0, 0, 0};
         int opsPerformed = 0;
-        double userInput = 0;
+        int userInput = 0;
         Random random = new Random();
         for (int i = 0; i < count; i++, opsPerformed++) {
             operations[i] = random.nextInt(2);
@@ -90,7 +92,8 @@ public class MysteryNumber {
         for (int i = 0, decimal = 0; i < in.length(); i++) {
             char ch = in.charAt(i);
             boolean result = Character.isDigit(ch);
-            if (ch == '.') decimal++;
+            if (ch == '.')
+                decimal++;
             //not a number if character is not a digit and not '.'
             if (!result && ch != '.') {
                 JOptionPane.showMessageDialog(null, "Error: please enter a number.");
